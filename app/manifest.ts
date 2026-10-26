@@ -1,0 +1,2 @@
+import type { MetadataRoute } from "next";
+export default function manifest(): MetadataRoute.Manifest { return { name: "Aurelle Appointment Studio", short_name: "Aurelle", start_url: "/", display: "standalone", background_color: "#f7f2ec", theme_color: "#f7f2ec", icons: [{ src: "/icon.svg", sizes: "any", type: "image/svg+xml" }] }; }

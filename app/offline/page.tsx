@@ -1,0 +1,1 @@
+export default function Offline() { return <main className="offline"><div><small>AURELLE STUDIO</small><h1>You are offline</h1><p>Your studio workspace will be here when you reconnect.</p></div></main>; }
