@@ -12,6 +12,6 @@ Next.js App Router, TypeScript, Tailwind CSS with shadcn-inspired local primitiv
 
 Use Node.js 20 or newer and PostgreSQL. Copy .env.example to .env and set DATABASE_URL. Install dependencies, run npm run db:generate, npm run db:push, then npm run dev. Before delivery run npm run lint, npm run typecheck and npm run build.
 
-The local .npmrc points to the requested Nexus mirror and machine certificate. It is intentionally excluded from Git so internal registry details do not enter a public repository. Configure an accessible registry on your machine before installing.
+The project-local `.npmrc` is intentionally ignored by Git because registry configuration is machine-specific. Run `npm ci` with your configured registry. If the configured mirror does not provide a dependency, npmjs is an approved fallback for dependency installation.
 
 The initial schema separates clients, services and appointments, stores prices as integer cents, and indexes appointment time/status. Before real client data is used, add authentication, access controls, retention rules, consent, backups and deployment secret management. See BACKLOG.md and DAILY_WORKFLOW.md for the 30-day release plan and daily review/test/implementation/docs/debug/handoff cycle. Day 00 is the foundation; day 01 begins product behavior.

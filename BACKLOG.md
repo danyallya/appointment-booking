@@ -7,6 +7,9 @@ Deliver a polished appointment workspace for a boutique care studio: client book
 Next.js App Router, strict TypeScript, Tailwind, responsive Aurelle dashboard, client search, day filters, booking dialog, theme switch, health route, PWA shell, PostgreSQL Prisma schema, Git ignore rules, README and daily cycle are prepared. Dashboard data is illustrative.
 
 ## Day-by-day
+### Day 00 validation
+Nexus returned 404 for packages used by this project. Following the user's approval, dependencies were installed with npmjs fallback. The ignored local .npmrc preserves Nexus as default and contains only required scope overrides. Tests, lint, typecheck and production build passed; Day 01 has not started.
+
 | Day | Focus | Acceptance |
 |---|---|---|
 | 01 | Baseline quality | Review foundation; install from approved registry; lint/types/build pass; record browser baseline. |
