@@ -5,7 +5,7 @@ const records=[["Amelia Rose","Signature facial","09:30","Confirmed","AR","peach
 const bars=[36,54,42,70,61,90,73];
 export default function Home(){
  const [q,setQ]=useState(""); const [day,setDay]=useState("Today"); const [dark,setDark]=useState(false); const [open,setOpen]=useState(false);
- const shown=useMemo(()=>records.filter(r=>r[0].toLowerCase().includes(q.toLowerCase())),[q]);
+ const shown=useMemo(()=>records.filter(r=>day==="Today"&&r[0].toLowerCase().includes(q.toLowerCase())),[q,day]);
  return <main className={dark?"shell dark":"shell"}>
   <aside className="side"><div className="brand"><i>a</i><div><b>AURELLE</b><small>CARE STUDIO</small></div></div><small className="label">WORKSPACE</small><a className="nav active"><FiCalendar/>Overview</a><a className="nav"><FiClock/>Appointments</a><a className="nav"><FiUsers/>Clients</a><div className="aside-note">✦<p>Your studio,<br/>in its best rhythm.</p><small>Everything in one considered place.</small></div><div className="user"><i>EC</i><span><b>Emma Clarke</b><small>Studio owner</small></span><FiMoreHorizontal/></div></aside>
   <section className="main"><header><span>Workspace <i>/</i> <b>Overview</b></span><div><button aria-label="Notifications"><FiBell/></button><button onClick={()=>setDark(!dark)} aria-label="Toggle theme">{dark?<FiSun/>:<FiMoon/>}</button><i className="user-dot">EC</i></div></header><div className="wrap">
