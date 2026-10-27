@@ -46,3 +46,7 @@ Nexus returned 404 for packages used by this project. Following the user's appro
 Record new issues with priority/day/acceptance; explain moved work in the daily log. Split broad tasks. Completion includes UI, validation, tests, docs and error states.
 
 - Day 01: Done. Browser baseline and route map are recorded in README. Review fixed a dark-theme text contrast defect, updated the stale sample date, and narrowed service-worker caching to the public shell/static assets; API and dynamic navigation responses are excluded. Day 02 is schema validation and repeatable local PostgreSQL setup.
+
+## Process change effective Day 02 — 2026-10-27
+
+Apply [DELIVERY-POLICY.md](DELIVERY-POLICY.md) to every remaining ticket: finish Aurelle Appointment Studio before the next repository, use meaningful scope-driven commits and deliver through its own reviewed PR. A blocked external gate needs a concrete record and next action. This adds delivery gates without moving Day 02–30 product work or changing completed history.

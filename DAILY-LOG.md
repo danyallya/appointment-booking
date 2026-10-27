@@ -18,3 +18,11 @@
 - Checks: `npm test` passed (2 files, 4 tests); `npm run lint`, `npm run typecheck`, `npm run db:generate`, `npm run build`, and `git diff --check` passed. No database migration or client data was used.
 - GitHub: implementation/docs commit `da8e648` (`fix: protect appointment data from service-worker caching`) was pushed to `day-01/baseline-quality`, fast-forwarded to `main`, and `main` was pushed. This log entry will be included in the final sync.
 - Next: Day 02 — validate the Prisma schema and document repeatable local PostgreSQL setup.
+
+## Review workflow maintenance — 2026-10-27
+
+- The user requested careful sequential project execution, commit content/counts suited to each product and an independent branch/PR per repository with panel review and merge.
+- Aurelle review checks service duration, timezone interpretation and booking overlaps together with customer privacy, accessible appointment dialogs and safe API cache boundaries. Added a standalone delivery policy and entry points in AGENTS, README and BACKLOG.
+- Documentation-only maintenance on `docs/aurelle-booking-review`; Markdown diff reviewed and `git diff --check` used. No application tests/build rerun for this process change. Next product work: Day 02 — Prisma schema validation and repeatable local PostgreSQL setup with migration guidance.
+- This is the pre-merge log state. The portfolio workspace DELIVERY-RECEIPTS.md records the actual PR URL, checked head, panel gates, merge SHA and sync afterward; reconcile it here in the next authorized update.
+- Commit boundary: `dae77d5` establishes the booking review policy. This follow-up repairs DAILY_WORKFLOW.md to stay on the manually requested day and require the complete PR/panel-merge/sync handoff rather than treating a branch push as delivery.
