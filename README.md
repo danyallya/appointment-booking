@@ -23,3 +23,7 @@ The initial schema separates clients, services and appointments, stores prices a
 - Browser baseline: opened the dashboard at about 727 CSS pixels wide, checked its responsive shell and current appointment list, toggled light/dark themes, and opened/closed the appointment dialog. The dark theme initially inherited the light text color for the page heading; `.shell` now applies its active theme color. The displayed fixture date was one day behind the run date and is now Tuesday, 27 October 2026.
 - PWA cache boundary: the service worker pre-caches only `/offline`, the manifest and icon; it caches only `/_next/static/` assets and those public metadata files. API requests bypass the worker and navigation stays network-only with the offline page as fallback. Cache version `aurelle-shell-v2` clears the prior broad cache on activation.
 - Verification tools are Vitest, ESLint, strict TypeScript, Next.js production build and Prisma Client generation. Day 01 passed `npm test` (2 files, 4 tests), `npm run lint`, `npm run typecheck`, `npm run db:generate`, and `npm run build`. No database migration or real client data was used.
+
+## Delivery and review
+
+Aurelle review checks service duration, timezone interpretation and booking overlaps together with customer privacy, accessible appointment dialogs and safe API cache boundaries. Follow [DELIVERY-POLICY.md](DELIVERY-POLICY.md) from Day 02 for sequential execution, scope-driven commits and this repository's separate branch/PR with GitHub panel review and merge.
