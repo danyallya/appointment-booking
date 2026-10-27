@@ -17,4 +17,3 @@ Follow [DELIVERY-POLICY.md](DELIVERY-POLICY.md). Complete Aurelle before the nex
 # Contribution opportunities
 
 Read CONTRIBUTING.md at startup. Within the requested booking ticket, consider a synthetic timezone/overlap reproduction and genuine joint work. Document actual evidence during existing reviews and setup documentation; keep all checks and panel gates. No badge quotas, automatic day advancement or external outreach are authorized.
-
