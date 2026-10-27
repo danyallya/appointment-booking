@@ -9,3 +9,12 @@
 - Database setup: npm run db:generate generated Prisma Client from the local schema. No real database connection or data push was attempted.
 - GitHub: Day 00 foundation commit af23b0a is pushed to both main and day-00-foundation: https://github.com/danyallya/appointment-booking. Day 01 has not started.
 - Schedule: Day 01 has not started. The next task is Day 01 in BACKLOG.md; wait for the user to trigger that day.
+
+## Day 01 — baseline quality (2026-10-27, Asia/Tehran)
+
+- Review: inspected the dashboard, modal, Prisma schema, health/offline routes, theme variables, PWA worker and prior tests. Browser review at about 727 CSS pixels showed low-contrast heading text in dark mode and a stale fixture date; the service worker also cached every successful same-origin GET, including dynamic pages and future API responses.
+- Implementation: the shell now applies its active theme text color, the fixture date matches Tuesday, 27 October 2026, and the worker caches only the offline shell plus public static assets. API requests bypass it, navigation stays network-only with an offline fallback, and cache version `aurelle-shell-v2` removes the older broad cache. Added cache-boundary tests and page-render checks.
+- Browser: verified the dashboard, dark and light themes, appointment modal labels, and open/close behavior in the internal browser. Rechecked the dark theme after its contrast fix.
+- Checks: `npm test` passed (2 files, 4 tests); `npm run lint`, `npm run typecheck`, `npm run db:generate`, `npm run build`, and `git diff --check` passed. No database migration or client data was used.
+- GitHub: implementation/docs commit `da8e648` (`fix: protect appointment data from service-worker caching`) was pushed to `day-01/baseline-quality`, fast-forwarded to `main`, and `main` was pushed. This log entry will be included in the final sync.
+- Next: Day 02 — validate the Prisma schema and document repeatable local PostgreSQL setup.
