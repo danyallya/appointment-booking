@@ -14,3 +14,7 @@ Follow [DELIVERY-POLICY.md](DELIVERY-POLICY.md). Complete Aurelle before the nex
 10. Merge through the GitHub panel only when its gates pass. An author review is not an independent approval; record missing required reviewers as blockers and never bypass protection.
 11. Confirm Merged, fetch and fast-forward local `main` to `origin/main`, retain the pushed branch and confirm a clean worktree. Then proceed to the next portfolio repository.
 12. DAILY-LOG.md records the actual pre-merge scope, commands, known commits, branch/PR status and next day. Record the final panel merge SHA and sync receipt in the workspace DELIVERY-RECEIPTS.md and reconcile it at the next authorized log update.
+# Contribution opportunities
+
+Read CONTRIBUTING.md at startup. Within the requested booking ticket, consider a synthetic timezone/overlap reproduction and genuine joint work. Document actual evidence during existing reviews and setup documentation; keep all checks and panel gates. No badge quotas, automatic day advancement or external outreach are authorized.
+
