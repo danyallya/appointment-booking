@@ -27,3 +27,7 @@ The initial schema separates clients, services and appointments, stores prices a
 ## Delivery and review
 
 Aurelle review checks service duration, timezone interpretation and booking overlaps together with customer privacy, accessible appointment dialogs and safe API cache boundaries. Follow [DELIVERY-POLICY.md](DELIVERY-POLICY.md) from Day 02 for sequential execution, scope-driven commits and this repository's separate branch/PR with GitHub panel review and merge.
+
+## Contributions and examples
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for reproducible reports, genuine collaboration and product examples such as a booking/setup walkthrough using PostgreSQL and fictitious customers. Contributions follow the product backlog and reviewed PR workflow.

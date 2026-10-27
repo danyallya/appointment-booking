@@ -37,3 +37,7 @@ Historical Day 00/01 entries describe their original workflow. This policy super
 A timezone repair, availability validation and an independently complete calendar interaction can have different commit boundaries. Keep each behavioral fix with its focused cases rather than applying another repository's history pattern.
 
 Next planned scope: Day 02 — Prisma schema validation and repeatable local PostgreSQL setup with migration guidance.
+
+## Contribution evidence
+
+Follow [CONTRIBUTING.md](CONTRIBUTING.md) within the existing delivery scope. Consider a synthetic timezone/overlap booking case with explicit duration and expected availability. Keep real issue links and agreed coauthor attribution with the matching change. Profile goals do not change commit counts, review gates, day numbering or authorization for external contact/settings/payment.
