@@ -12,7 +12,7 @@ Nexus returned 404 for packages used by this project. Following the user's appro
 
 | Day | Focus | Acceptance |
 |---|---|---|
-| 01 | Baseline quality | Review foundation; install from approved registry; lint/types/build pass; record browser baseline. |
+| 01 | Baseline quality | Done — review foundation, record browser baseline, fix dark-theme contrast and stale sample date, and restrict PWA caching. Lint/types/tests/build pass. |
 | 02 | Prisma setup | Validate schema and repeatable local DB setup; document migrations. |
 | 03 | Service catalog | Add service reads and validation for price, duration and active state. |
 | 04 | Client directory | Persist clients with normalized email/phone; add search and empty states. |
@@ -44,3 +44,5 @@ Nexus returned 404 for packages used by this project. Following the user's appro
 | 30 | Release handoff | Complete deployment guide, env reference, screenshots and release notes. |
 
 Record new issues with priority/day/acceptance; explain moved work in the daily log. Split broad tasks. Completion includes UI, validation, tests, docs and error states.
+
+- Day 01: Done. Browser baseline and route map are recorded in README. Review fixed a dark-theme text contrast defect, updated the stale sample date, and narrowed service-worker caching to the public shell/static assets; API and dynamic navigation responses are excluded. Day 02 is schema validation and repeatable local PostgreSQL setup.
