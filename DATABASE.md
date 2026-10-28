@@ -22,4 +22,4 @@ No automatic reset or drop command is provided. To rehearse from scratch, create
 
 ## Verification on 2026-10-28
 
-Schema validation, client generation and offline SQL generation are separate from database execution. No local PostgreSQL tools/service or port-5432 listener were found; `db:status` against explicit loopback development settings exited 1 with a schema-engine error. Migration application and twice-run seed verification are blocked until that local service exists. No database success is claimed. Browser/PR panel delivery is separately blocked by disabled Work browser access.
+Schema validation, client generation and offline SQL generation are separate from database execution. No local PostgreSQL tools/service or port-5432 listener were found; `db:status` against explicit loopback development settings exited 1 with a schema-engine error. Migration application and twice-run seed verification are blocked until that local service exists. No database success is claimed. Browser access was disabled during the initial local pass; PR #4 was later reviewed in the GitHub panel. It remains Draft until the isolated local database acceptance is complete.
