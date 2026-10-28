@@ -13,7 +13,7 @@ Nexus returned 404 for packages used by this project. Following the user's appro
 | Day | Focus | Acceptance |
 |---|---|---|
 | 01 | Baseline quality | Done — review foundation, record browser baseline, fix dark-theme contrast and stale sample date, and restrict PWA caching. Lint/types/tests/build pass. |
-| 02 | Prisma setup | Validate schema and repeatable local DB setup; document migrations. |
+| 02 | Prisma setup | Partially verified, blocked — schema/client and migration/seed tools prepared; local PostgreSQL apply/repeatability and browser/PR panel gates pending. |
 | 03 | Service catalog | Add service reads and validation for price, duration and active state. |
 | 04 | Client directory | Persist clients with normalized email/phone; add search and empty states. |
 | 05 | Booking rules | Validate duration and prevent overlaps server-side. |

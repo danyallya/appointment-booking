@@ -10,7 +10,7 @@ The interface centers the decisions a studio owner makes each morning: what is b
 
 Next.js App Router, TypeScript, Tailwind CSS with shadcn-inspired local primitives, Prisma/PostgreSQL, React Icons, Recharts/Chart.js and planned jsPDF/SheetJS exports.
 
-Use Node.js 20 or newer and PostgreSQL. Copy .env.example to .env and set DATABASE_URL. Install dependencies, run npm run db:generate, npm run db:push, then npm run dev. Before delivery run npm run lint, npm run typecheck and npm run build.
+Use Node.js 20.12 or newer and local PostgreSQL. Follow [DATABASE.md](DATABASE.md) for the isolated `aurelle_dev` database, tracked migration, validation and synthetic seed. Use `db:deploy` for the reviewed initial migration; `db:push` does not replace migration history. Run npm run dev for the preview, and lint/typecheck/tests/build before delivery.
 
 The project-local `.npmrc` is intentionally ignored by Git because registry configuration is machine-specific. Run `npm ci` with your configured registry. If the configured mirror does not provide a dependency, npmjs is an approved fallback for dependency installation.
 
