@@ -20,6 +20,10 @@ Use `npm run db:migrate -- --name <meaningful-change>` only for a later reviewed
 
 No automatic reset or drop command is provided. To rehearse from scratch, create a new empty local disposable database with the required name after explicitly deciding what existing data can be discarded. Do not reset, truncate or delete another database. Back up useful data first; use a new corrective migration instead of editing an applied migration. Production deployment/backup changes require separate authorization.
 
+## Day 04 prerequisite recheck — 2026-10-31
+
+The Day 02 acceptance gate is still blocked: `psql`, `postgres`, `pg_ctl` and `docker` are unavailable; there is no listener on `127.0.0.1:5432`; and `.env` is absent. No migration was applied and no seed repeatability result is claimed. Next: start local PostgreSQL 15+, create only the isolated `aurelle_dev` database, configure ignored `.env`, review/apply `npm run db:deploy`, confirm `npm run db:status` has no pending migrations, and run `npm run db:seed` twice with unchanged counts. Then finish PR #4's exact-head panel review/merge before resuming Day 03 and the requested Day 04 client directory.
+
 ## Verification on 2026-10-28
 
 Schema validation, client generation and offline SQL generation are separate from database execution. No local PostgreSQL tools/service or port-5432 listener were found; `db:status` against explicit loopback development settings exited 1 with a schema-engine error. Migration application and twice-run seed verification are blocked until that local service exists. No database success is claimed. Browser access was disabled during the initial local pass; PR #4 was later reviewed in the GitHub panel. It remains Draft until the isolated local database acceptance is complete.
