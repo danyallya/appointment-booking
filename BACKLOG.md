@@ -13,9 +13,9 @@ Nexus returned 404 for packages used by this project. Following the user's appro
 | Day | Focus | Acceptance |
 |---|---|---|
 | 01 | Baseline quality | Done — review foundation, record browser baseline, fix dark-theme contrast and stale sample date, and restrict PWA caching. Lint/types/tests/build pass. |
-| 02 | Prisma setup | Validate schema and repeatable local DB setup; document migrations. |
+| 02 | Prisma setup | Blocked — schema/client and migration/seed tools are prepared, but local PostgreSQL migration application, `db:status` and repeat-seed acceptance remain pending; PR #4 stays Draft until these gates pass. |
 | 03 | Service catalog | Add service reads and validation for price, duration and active state. |
-| 04 | Client directory | Persist clients with normalized email/phone; add search and empty states. |
+| 04 | Client directory | Blocked by Day 02 — persist clients with normalized email/phone, search and empty states after PostgreSQL migration/seed acceptance and Day 03 service catalog delivery. |
 | 05 | Booking rules | Validate duration and prevent overlaps server-side. |
 | 06 | Public booking | Build service, date and slot selection for clients. |
 | 07 | Confirmation | Persist requests and show reference and next steps. |
@@ -53,4 +53,4 @@ Apply [DELIVERY-POLICY.md](DELIVERY-POLICY.md) to every remaining ticket: finish
 
 ## Contribution integration — 2026-10-27
 
-Effective Day 02: apply [CONTRIBUTING.md](CONTRIBUTING.md) inside existing tickets. At already scheduled weekly reviews, assess real feedback such as a synthetic timezone/overlap booking case with explicit duration and expected availability; at documentation/setup tickets, improve a booking/setup walkthrough using PostgreSQL and fictitious customers. Day 30 records actual contribution evidence and outstanding external dependencies. No day is renumbered and no quota or badge is a completion criterion. Next scope remains: Day 02 — Prisma schema validation and repeatable local PostgreSQL setup with migration guidance.
+Effective Day 02: apply [CONTRIBUTING.md](CONTRIBUTING.md) inside existing tickets. At already scheduled weekly reviews, assess real feedback such as a synthetic timezone/overlap booking case with explicit duration and expected availability; at documentation/setup tickets, improve a booking/setup walkthrough using PostgreSQL and fictitious customers. Day 30 records actual contribution evidence and outstanding external dependencies. No day is renumbered and no quota or badge is a completion criterion. The Day 02 PostgreSQL gate remains open; finish its local acceptance and PR before Day 03, then resume the user's requested Day 04 in order.
