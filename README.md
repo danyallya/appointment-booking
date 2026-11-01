@@ -10,7 +10,7 @@ The interface centers the decisions a studio owner makes each morning: what is b
 
 Next.js App Router, TypeScript, Tailwind CSS with shadcn-inspired local primitives, Prisma/PostgreSQL, React Icons, Recharts/Chart.js and planned jsPDF/SheetJS exports.
 
-Use Node.js 20 or newer and PostgreSQL. Copy .env.example to .env and set DATABASE_URL. Install dependencies, run npm run db:generate, npm run db:push, then npm run dev. Before delivery run npm run lint, npm run typecheck and npm run build.
+Use Node.js 20.12 or newer and local PostgreSQL. Follow [DATABASE.md](DATABASE.md) for the isolated `aurelle_dev` database, tracked migration, validation and synthetic seed. Use `db:deploy` for the reviewed initial migration; `db:push` does not replace migration history. Run npm run dev for the preview, and lint/typecheck/tests/build before delivery.
 
 The project-local `.npmrc` is intentionally ignored by Git because registry configuration is machine-specific. Run `npm ci` with your configured registry. If the configured mirror does not provide a dependency, npmjs is an approved fallback for dependency installation.
 
@@ -23,6 +23,10 @@ The initial schema separates clients, services and appointments, stores prices a
 - Browser baseline: opened the dashboard at about 727 CSS pixels wide, checked its responsive shell and current appointment list, toggled light/dark themes, and opened/closed the appointment dialog. The dark theme initially inherited the light text color for the page heading; `.shell` now applies its active theme color. The displayed fixture date was one day behind the run date and is now Tuesday, 27 October 2026.
 - PWA cache boundary: the service worker pre-caches only `/offline`, the manifest and icon; it caches only `/_next/static/` assets and those public metadata files. API requests bypass the worker and navigation stays network-only with the offline page as fallback. Cache version `aurelle-shell-v2` clears the prior broad cache on activation.
 - Verification tools are Vitest, ESLint, strict TypeScript, Next.js production build and Prisma Client generation. Day 01 passed `npm test` (2 files, 4 tests), `npm run lint`, `npm run typecheck`, `npm run db:generate`, and `npm run build`. No database migration or real client data was used.
+
+## Day 02 PostgreSQL data foundation
+
+The tracked initial Prisma migration creates Client, Service and Appointment with client/service relationships and schedule indexes. On 2026-11-01 it was applied to a separate `aurelle_dev` database on a temporary loopback PostgreSQL 18.6 cluster; `npm run db:status` reported no pending migrations. Repeated seed runs preserved the same synthetic totals (1 client, 1 service, 0 appointments). The sample dashboard still uses illustrative data; this database setup does not claim persistent booking workflows or use real client records.
 
 ## Delivery and review
 
