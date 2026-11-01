@@ -18,7 +18,7 @@ The initial schema separates clients, services and appointments, stores prices a
 
 ## Day 01 baseline and route map
 
-- The current product preview is `/`; operational routes include `GET /api/health` and the Day 03 public `GET /api/services` catalog. `/offline` is the static offline fallback. Appointment, client-write and reporting routes are not implemented yet.
+- The product preview is `/`; operational routes include `GET /api/health` and the Day 03 public `GET /api/services` catalog. Day 04 adds `/clients` and `GET/POST /api/clients` for a local development preview only. The page and API return 404 outside `NODE_ENV=development` or when `DATABASE_URL` is not Aurelle's loopback `aurelle_dev` database. `/offline` is the static offline fallback. Booking writes and reporting routes are not implemented yet.
 - The dashboard calendar and metrics use illustrative records. The “New appointment” dialog is a local interaction preview and does not persist a booking or contact a client.
 - Browser baseline: opened the dashboard at about 727 CSS pixels wide, checked its responsive shell and current appointment list, toggled light/dark themes, and opened/closed the appointment dialog. The dark theme initially inherited the light text color for the page heading; `.shell` now applies its active theme color. The displayed fixture date was one day behind the run date and is now Tuesday, 27 October 2026.
 - PWA cache boundary: the service worker pre-caches only `/offline`, the manifest and icon; it caches only `/_next/static/` assets and those public metadata files. API requests bypass the worker and navigation stays network-only with the offline page as fallback. Cache version `aurelle-shell-v2` clears the prior broad cache on activation.
@@ -31,6 +31,14 @@ The tracked initial Prisma migration creates Client, Service and Appointment wit
 ## Day 03 service catalog
 
 `GET /api/services` returns the active service catalog in name order, selecting only public service fields. The route validates non-empty IDs/names, integer non-negative prices in cents, positive integer durations and active state. If database rows violate those invariants or the database read fails, it returns a generic `503` with `Cache-Control: no-store`; database details are not sent to the caller. The tracked Day 03 migration enforces positive duration and non-negative price and adds an `(active, name)` index. The endpoint is read-only and exposes no client or appointment data; no service-management write route exists yet.
+
+## Day 04 local client directory
+
+`/clients` provides a responsive client list, search by name/email/phone, empty states, theme toggle and a small add-client form. `GET /api/clients` selects only directory fields and sorts by name/email; `POST /api/clients` trims names, lowercases email, normalizes optional phone numbers and returns generic validation/conflict/database errors with `Cache-Control: no-store`. A database migration checks normalized values and indexes client names.
+
+This is a local synthetic-data preview, not an authenticated customer feature. Both the page and APIs return 404 unless `NODE_ENV=development` and `DATABASE_URL` passes the loopback `aurelle_dev` guard. Do not enter real client details. Authentication and authorization remain scheduled for Days 16–17 before this directory can be used with real records.
+
+Day 04 verification passed 22 tests, lint, typecheck, Prisma validation/generation, production build, migration deploy/status and two seed runs (1 client, 1 service, 0 appointments). A local browser smoke created a fictional QA contact, searched it by phone and removed it afterward; production smoke requests to the page and both API methods returned 404.
 
 ## Delivery and review
 
