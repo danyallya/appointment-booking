@@ -18,7 +18,7 @@ The initial schema separates clients, services and appointments, stores prices a
 
 ## Day 01 baseline and route map
 
-- The current product preview is `/`; the existing operational route is `GET /api/health`, and `/offline` is the static offline fallback. Appointment, client, service and reporting routes are not implemented yet.
+- The current product preview is `/`; operational routes include `GET /api/health` and the Day 03 public `GET /api/services` catalog. `/offline` is the static offline fallback. Appointment, client-write and reporting routes are not implemented yet.
 - The dashboard calendar and metrics use illustrative records. The “New appointment” dialog is a local interaction preview and does not persist a booking or contact a client.
 - Browser baseline: opened the dashboard at about 727 CSS pixels wide, checked its responsive shell and current appointment list, toggled light/dark themes, and opened/closed the appointment dialog. The dark theme initially inherited the light text color for the page heading; `.shell` now applies its active theme color. The displayed fixture date was one day behind the run date and is now Tuesday, 27 October 2026.
 - PWA cache boundary: the service worker pre-caches only `/offline`, the manifest and icon; it caches only `/_next/static/` assets and those public metadata files. API requests bypass the worker and navigation stays network-only with the offline page as fallback. Cache version `aurelle-shell-v2` clears the prior broad cache on activation.
@@ -27,6 +27,10 @@ The initial schema separates clients, services and appointments, stores prices a
 ## Day 02 PostgreSQL data foundation
 
 The tracked initial Prisma migration creates Client, Service and Appointment with client/service relationships and schedule indexes. On 2026-11-01 it was applied to a separate `aurelle_dev` database on a temporary loopback PostgreSQL 18.6 cluster; `npm run db:status` reported no pending migrations. Repeated seed runs preserved the same synthetic totals (1 client, 1 service, 0 appointments). The sample dashboard still uses illustrative data; this database setup does not claim persistent booking workflows or use real client records.
+
+## Day 03 service catalog
+
+`GET /api/services` returns the active service catalog in name order, selecting only public service fields. The route validates non-empty IDs/names, integer non-negative prices in cents, positive integer durations and active state. If database rows violate those invariants or the database read fails, it returns a generic `503` with `Cache-Control: no-store`; database details are not sent to the caller. The tracked Day 03 migration enforces positive duration and non-negative price and adds an `(active, name)` index. The endpoint is read-only and exposes no client or appointment data; no service-management write route exists yet.
 
 ## Delivery and review
 

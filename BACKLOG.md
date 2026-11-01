@@ -13,8 +13,8 @@ Nexus returned 404 for packages used by this project. Following the user's appro
 | Day | Focus | Acceptance |
 |---|---|---|
 | 01 | Baseline quality | Done — review foundation, record browser baseline, fix dark-theme contrast and stale sample date, and restrict PWA caching. Lint/types/tests/build pass. |
-| 02 | Prisma setup | Local acceptance complete — the tracked migration is applied to isolated `aurelle_dev`, status is current, and repeated seed counts remain 1 client, 1 service and 0 appointments. Existing PR #4 remains Draft until final exact-head panel review and merge. |
-| 03 | Service catalog | Add service reads and validation for price, duration and active state. |
+| 02 | Prisma setup | Complete and merged via PR #4. The tracked migration is applied to isolated `aurelle_dev`, status is current, and repeated seed counts remain 1 client, 1 service, 0 appointments. See the portfolio delivery receipt for the exact head and merge SHA. |
+| 03 | Service catalog | Implementation and local checks complete on `day-03/service-catalog`: active service reads, price/duration/status validation, PostgreSQL constraints and catalog index. Final GitHub PR review and merge are in progress. |
 | 04 | Client directory | After Day 03 service catalog delivery, persist clients with normalized email/phone, search and empty states. PostgreSQL migration/status/repeat-seed acceptance is complete. |
 | 05 | Booking rules | Validate duration and prevent overlaps server-side. |
 | 06 | Public booking | Build service, date and slot selection for clients. |
