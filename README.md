@@ -24,6 +24,10 @@ The initial schema separates clients, services and appointments, stores prices a
 - PWA cache boundary: the service worker pre-caches only `/offline`, the manifest and icon; it caches only `/_next/static/` assets and those public metadata files. API requests bypass the worker and navigation stays network-only with the offline page as fallback. Cache version `aurelle-shell-v2` clears the prior broad cache on activation.
 - Verification tools are Vitest, ESLint, strict TypeScript, Next.js production build and Prisma Client generation. Day 01 passed `npm test` (2 files, 4 tests), `npm run lint`, `npm run typecheck`, `npm run db:generate`, and `npm run build`. No database migration or real client data was used.
 
+## Day 02 PostgreSQL data foundation
+
+The tracked initial Prisma migration creates Client, Service and Appointment with client/service relationships and schedule indexes. On 2026-11-01 it was applied to a separate `aurelle_dev` database on a temporary loopback PostgreSQL 18.6 cluster; `npm run db:status` reported no pending migrations. Repeated seed runs preserved the same synthetic totals (1 client, 1 service, 0 appointments). The sample dashboard still uses illustrative data; this database setup does not claim persistent booking workflows or use real client records.
+
 ## Delivery and review
 
 Aurelle review checks service duration, timezone interpretation and booking overlaps together with customer privacy, accessible appointment dialogs and safe API cache boundaries. Follow [DELIVERY-POLICY.md](DELIVERY-POLICY.md) from Day 02 for sequential execution, scope-driven commits and this repository's separate branch/PR with GitHub panel review and merge.
