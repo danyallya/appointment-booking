@@ -18,7 +18,7 @@ The initial schema separates clients, services and appointments, stores prices a
 
 ## Day 01 baseline and route map
 
-- The product preview is `/`; operational routes include `GET /api/health` and the Day 03 public `GET /api/services` catalog. Day 04 adds `/clients` and `GET/POST /api/clients` for a local development preview only. The page and API return 404 outside `NODE_ENV=development` or when `DATABASE_URL` is not Aurelle's loopback `aurelle_dev` database. `/offline` is the static offline fallback. Booking writes and reporting routes are not implemented yet.
+- The product preview is `/`; operational routes include `GET /api/health` and the Day 03 public `GET /api/services` catalog. Day 04 adds `/clients` and `GET/POST /api/clients` for a local development preview only. Day 05 adds `POST /api/appointments` with the same development and loopback `aurelle_dev` guard. The appointment API requires a loopback URL/origin and an explicit timezone offset; it derives the end time from the current active service, checks active overlaps and stores a `REQUESTED` appointment. `/offline` is the static offline fallback. This endpoint is an unauthenticated local preview and must not be exposed to real clients before authentication and authorization (Days 16–17).
 - The dashboard calendar and metrics use illustrative records. The “New appointment” dialog is a local interaction preview and does not persist a booking or contact a client.
 - Browser baseline: opened the dashboard at about 727 CSS pixels wide, checked its responsive shell and current appointment list, toggled light/dark themes, and opened/closed the appointment dialog. The dark theme initially inherited the light text color for the page heading; `.shell` now applies its active theme color. The displayed fixture date was one day behind the run date and is now Tuesday, 27 October 2026.
 - PWA cache boundary: the service worker pre-caches only `/offline`, the manifest and icon; it caches only `/_next/static/` assets and those public metadata files. API requests bypass the worker and navigation stays network-only with the offline page as fallback. Cache version `aurelle-shell-v2` clears the prior broad cache on activation.
@@ -43,6 +43,14 @@ Day 04 verification passed 22 tests, lint, typecheck, Prisma validation/generati
 ## Delivery and review
 
 Aurelle review checks service duration, timezone interpretation and booking overlaps together with customer privacy, accessible appointment dialogs and safe API cache boundaries. Follow [DELIVERY-POLICY.md](DELIVERY-POLICY.md) from Day 02 for sequential execution, scope-driven commits and this repository's separate branch/PR with GitHub panel review and merge.
+
+## Day 05 booking rules
+
+`POST /api/appointments` accepts only `clientId`, `serviceId` and an ISO start instant with an explicit `Z` or numeric offset. It verifies the client and active service, derives the end from the stored service duration (bounded to 12 hours), and returns generic validation, not-found, conflict or unavailable responses. Local wall-clock times without an offset and caller-supplied end times are not trusted. The stored timestamps are UTC instants.
+
+The API rejects intersections with existing `REQUESTED` or `CONFIRMED` appointments; `[start, end)` intervals allow back-to-back bookings and cancelled bookings do not block a slot. A PostgreSQL GiST exclusion constraint enforces this across concurrent writers without an extension, and a check constraint rejects empty or reversed intervals. This product currently has a single studio calendar; if multiple rooms/resources are introduced, the exclusion key must include the selected resource. The endpoint remains hidden outside the loopback development preview until authentication and owner authorization are complete.
+
+`npm run db:verify-booking-rules` is an opt-in local acceptance script for the PostgreSQL constraints. `npm run api:verify-booking-rules` smoke-tests the HTTP route against an already running local app at `127.0.0.1:3210` (override with `AURELLE_LOCAL_BASE_URL`). Both require the isolated loopback `aurelle_dev` database and use random `.invalid` synthetic records that they remove afterward. Day 05 verified overlapping active appointments are rejected, adjacent and cancelled overlaps are accepted, and invalid intervals are rejected.
 
 ## Contributions and examples
 

@@ -15,8 +15,8 @@ Nexus returned 404 for packages used by this project. Following the user's appro
 | 01 | Baseline quality | Done — review foundation, record browser baseline, fix dark-theme contrast and stale sample date, and restrict PWA caching. Lint/types/tests/build pass. |
 | 02 | Prisma setup | Complete and merged via PR #4. The tracked migration is applied to isolated `aurelle_dev`, status is current, and repeated seed counts remain 1 client, 1 service, 0 appointments. See the portfolio delivery receipt for the exact head and merge SHA. |
 | 03 | Service catalog | Complete — merged via PR #5 (`day-03/service-catalog`); active service reads, price/duration/status validation, PostgreSQL constraints and catalog index are on `main`. See the portfolio delivery receipt for the exact reviewed head and merge SHA. |
-| 04 | Client directory | Implementation and checks complete on `day-04/client-directory`: searchable, normalized client records behind a loopback-only development guard, responsive list/form and empty states. PostgreSQL migration/status/repeat-seed acceptance is complete. Exact-head PR review and merge remain pending. |
-| 05 | Booking rules | Validate duration and prevent overlaps server-side. |
+| 04 | Client directory | Complete — PR #6 merged to `main`; searchable, normalized records remain behind a loopback-only development guard. PostgreSQL migration/status and repeat-seed acceptance passed. |
+| 05 | Booking rules | Complete — derive UTC end times from active service duration, require an explicit start offset, reject active overlaps and invalid intervals server-side, and enforce collision safety in PostgreSQL. Keep writes local-only until authentication/authorization (Days 16–17). See Day 05 log and delivery receipt. |
 | 06 | Public booking | Build service, date and slot selection for clients. |
 | 07 | Confirmation | Persist requests and show reference and next steps. |
 | 08 | Calendar data | Replace fixture rows with date queries and timezone-safe formatting. |
@@ -53,4 +53,4 @@ Apply [DELIVERY-POLICY.md](DELIVERY-POLICY.md) to every remaining ticket: finish
 
 ## Contribution integration — 2026-10-27
 
-Effective Day 02: apply [CONTRIBUTING.md](CONTRIBUTING.md) inside existing tickets. At already scheduled weekly reviews, assess real feedback such as a synthetic timezone/overlap booking case with explicit duration and expected availability; at documentation/setup tickets, improve a booking/setup walkthrough using PostgreSQL and fictitious customers. Day 30 records actual contribution evidence and outstanding external dependencies. No day is renumbered and no quota or badge is a completion criterion. The Day 02 PostgreSQL local acceptance is complete; finish its existing PR/panel gate before Day 03, then resume the user's requested Day 04 in order.
+Effective Day 02: apply [CONTRIBUTING.md](CONTRIBUTING.md) inside existing tickets. The Day 05 synthetic timezone/overlap case now uses an explicit service duration and expected conflict/boundary results; documentation examples use PostgreSQL and fictitious customers. Day 30 records actual contribution evidence and outstanding external dependencies. No day is renumbered and no quota or badge is a completion criterion. Day 05 PostgreSQL local acceptance passed.
