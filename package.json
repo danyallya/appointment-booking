@@ -16,6 +16,8 @@
     "db:migrate": "prisma migrate dev",
     "db:deploy": "prisma migrate deploy",
     "db:status": "prisma migrate status",
+    "db:verify-booking-rules": "node scripts/verify-booking-rules.mjs",
+    "api:verify-booking-rules": "node scripts/verify-booking-api.mjs",
     "db:seed": "node scripts/seed-local.mjs"
   },
   "dependencies": {
